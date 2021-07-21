@@ -1,4 +1,4 @@
-module tempaast
+module tempaast-go
 
 go 1.15
 
