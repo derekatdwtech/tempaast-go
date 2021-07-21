@@ -32,6 +32,9 @@ func main() {
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
+
+	devices.SetupDevices()
+
 	for true {
 		devices.ReadTemperature(probeDir)
 		time.Sleep(10 * time.Second)
