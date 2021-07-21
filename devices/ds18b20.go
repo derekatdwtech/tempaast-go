@@ -37,7 +37,7 @@ func ReadDS18B20(sensor string) float64 {
 	data, err := ioutil.ReadFile(sensor)
 
 	if err != nil {
-		log.Error("Failed to access probe directory ", sensor)
+		log.Error("Failed to access probe directory ", sensor, "Error: ", err)
 		return 0.0
 	}
 
