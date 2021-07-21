@@ -69,6 +69,7 @@ func ReadDS18B20(sensor string) float64 {
 
 	return temp
 }
+
 func CelciusToFarenheit(celcius float64) float64 {
 	return celcius*9.0/5.0 + 32
 }

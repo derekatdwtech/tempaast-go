@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"tempaast-go/devices"
+	"tempaast/devices"
 	"time"
 )
 
