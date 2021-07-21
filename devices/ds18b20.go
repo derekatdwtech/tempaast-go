@@ -16,7 +16,7 @@ var ErrReadSensor = errors.New("Failed to sensor temperature. Ensure you have co
 
 func SetupDS18B20() {
 	log.Info("Initializing w1-gpio")
-	_, gErr := exec.Command("modprobe w1-gpio").Output()
+	_, gErr := exec.Command("modprobe", "w1-gpio").Output()
 
 	if gErr != nil {
 		log.Error("Failed to initialize w1-gpio. Message: ", gErr)
@@ -25,7 +25,7 @@ func SetupDS18B20() {
 
 	log.Info("Initializing w1-therm")
 
-	_, tErr := exec.Command("modprobe w1-therm").Output()
+	_, tErr := exec.Command("modprobe", "w1-therm").Output()
 
 	if tErr != nil {
 		log.Error("Failed to initialize w1-therm. Message: ", tErr)
