@@ -34,10 +34,10 @@ func SetupDS18B20() {
 }
 
 func ReadDS18B20(sensor string) float64 {
-	data, err := ioutil.ReadFile(sensor)
+	data, err := ioutil.ReadFile(sensor + "/w1_slave")
 
 	if err != nil {
-		log.Error("Failed to access probe directory ", sensor, "Error: ", err)
+		log.Error("Failed to access probe directory ", sensor, " Error: ", err)
 		return 0.0
 	}
 
