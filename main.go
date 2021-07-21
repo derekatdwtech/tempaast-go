@@ -33,10 +33,10 @@ func main() {
 		os.Exit(1)
 	}
 
-	devices.SetupDevices()
+	devices.SetupDS18B20()
 
 	for true {
-		devices.ReadTemperature(probeDir)
+		devices.ReadDS18B20(probeDir)
 		time.Sleep(10 * time.Second)
 	}
 }

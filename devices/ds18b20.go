@@ -14,7 +14,7 @@ import (
 
 var ErrReadSensor = errors.New("Failed to sensor temperature. Ensure you have connected your device to your RaspberryPi")
 
-func SetupDevices() {
+func SetupDS18B20() {
 	log.Info("Initializing w1-gpio")
 	_, gErr := exec.Command("modprobe w1-gpio").Output()
 
@@ -33,7 +33,7 @@ func SetupDevices() {
 	}
 }
 
-func ReadTemperature(sensor string) float64 {
+func ReadDS18B20(sensor string) float64 {
 	data, err := ioutil.ReadFile(sensor)
 
 	if err != nil {
@@ -46,7 +46,7 @@ func ReadTemperature(sensor string) float64 {
 	if !strings.Contains(raw, " YES") {
 		log.Warn("Waiting for sensor to come online")
 		time.Sleep(10 * time.Second)
-		ReadTemperature(sensor)
+		ReadDS18B20(sensor)
 	}
 
 	i := strings.LastIndex(raw, "t=")
