@@ -5,7 +5,9 @@ import (
 	"fmt"
 	"os"
 	"tempaast/devices"
-	"time"
+	"tempaast/rest"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var probeDir string
@@ -33,10 +35,21 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Initialize REST Client
+	rest.New("https://meatmonitorapi.azurewebsites.net/", apiKey)
+	// Validate API Key
+	resp, err := rest.Get("api/key/validate")
+	if err != nil {
+		log.Fatal("Your API Key is invalid or has expired.")
+		os.Exit(77)
+	}
+
+	log.Info(resp)
+
 	devices.SetupDS18B20()
 
-	for true {
-		devices.ReadDS18B20(probeDir)
-		time.Sleep(10 * time.Second)
-	}
+	// for true {
+	// 	devices.ReadDS18B20(probeDir)
+	// 	time.Sleep(10 * time.Second)
+	// }
 }
