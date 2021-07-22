@@ -6,6 +6,7 @@ import (
 	"os"
 	"tempaast/devices"
 	"tempaast/rest"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -25,6 +26,7 @@ func init() {
 	flag.StringVar(&probeName, "n", "", probeNameUsage)
 	flag.StringVar(&apiKey, "k", "", apiKeyUsage)
 }
+
 func main() {
 	flag.Parse()
 
@@ -48,8 +50,8 @@ func main() {
 
 	devices.SetupDS18B20()
 
-	// for true {
-	// 	devices.ReadDS18B20(probeDir)
-	// 	time.Sleep(10 * time.Second)
-	// }
+	for true {
+		devices.ReadDS18B20(probeDir)
+		time.Sleep(10 * time.Second)
+	}
 }
