@@ -40,13 +40,11 @@ func main() {
 	// Initialize REST Client
 	rest.New("https://meatmonitorapi.azurewebsites.net/", apiKey)
 	// Validate API Key
-	resp, err := rest.Get("api/key/validate")
+	_, err := rest.Get("api/key/validate")
 	if err != nil {
 		log.Fatal("Your API Key is invalid or has expired.")
 		os.Exit(77)
 	}
-
-	log.Info(resp)
 
 	devices.SetupDS18B20()
 
